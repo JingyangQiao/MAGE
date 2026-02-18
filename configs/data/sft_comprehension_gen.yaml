@@ -1,0 +1,109 @@
+_target_: src.data.sft_clm.build_multi_datapipes
+_recursive_: False
+ datapipes:
+   - _target_: src.data.sft_clm.build_llava_jsonl_datapipes
+     data_dir: ./data/SEED-Data-VQAv2/annotations
+     image_dir: ./data/SEED-Data-VQAv2/COCO2014/train2014
+     max_length: 880
+     batch_size: 16
+     instruction_prompt: "[INST] {instruction} [/INST]\n"
+     num_img_in_tokens: 64
+     num_img_out_tokens: 64
+     cycle_count: 20
+     multi_resolution: True
+     resolution_grids:
+       - 1x1
+       - 1x2
+       - 1x3
+       - 2x1
+       - 3x1
+       - 1x4
+       - 4x1
+       - 2x2
+     base_resolution: 448
+     dataset_name: VQAv2
+
+# datapipes:
+#   - _target_: src.data.sft_clm.build_llava_jsonl_datapipes
+#     data_dir: ./data/SEED-Data-ImageNet/annotations
+#     image_dir: ./data/SEED-Data-ImageNet/imagenet/train
+#     max_length: 880
+#     batch_size: 16
+#     instruction_prompt: "[INST] {instruction} [/INST]\n"
+#     num_img_in_tokens: 64
+#     num_img_out_tokens: 64
+#     cycle_count: 20
+#     multi_resolution: True
+#     resolution_grids: 
+#       - 1x1
+#       - 1x2
+#       - 1x3
+#       - 2x1
+#       - 3x1
+#       - 1x4
+#       - 4x1
+#       - 2x2
+#     base_resolution: 448
+#     dataset_name: ImageNet
+
+# datapipes:
+#   - _target_: src.data.sft_clm.build_llava_jsonl_datapipes
+#     data_dir: ./data/SEED-Data-OCRVQA/annotations
+#     image_dir: ./data/SEED-Data-OCRVQA/OCR-VQA/images
+#     max_length: 880
+#     batch_size: 16
+#     instruction_prompt: "[INST] {instruction} [/INST]\n"
+#     num_img_in_tokens: 64
+#     num_img_out_tokens: 64
+#     cycle_count: 20
+#     multi_resolution: True
+#     resolution_grids: 
+#       - 1x1
+#       - 1x2
+#       - 1x3
+#       - 2x1
+#       - 3x1
+#       - 1x4
+#       - 4x1
+#       - 2x2
+#     base_resolution: 448
+#     dataset_name: OCRVQA
+
+# datapipes:
+#  - _target_: src.data.sft_clm.build_llava_jsonl_datapipes
+#    data_dir: ./data/SEED-Data-Grounding/annotations
+#    image_dir: ./data/SEED-Data-Grounding/COCO2014/train2014
+#    max_length: 880
+#    batch_size: 16
+#    instruction_prompt: "[INST] {instruction} [/INST]\n"
+#    num_img_in_tokens: 64
+#    num_img_out_tokens: 64
+#    cycle_count: 20
+#    multi_resolution: True
+#    resolution_grids:
+#      - 1x1
+#      - 1x2
+#      - 1x3
+#      - 2x1
+#      - 3x1
+#      - 1x4
+#      - 4x1
+#      - 2x2
+#    base_resolution: 448
+#    dataset_name: Grounding
+
+# datapipes:
+#   - _target_: src.data.sft_clm.build_gen_jsonl_datapipes
+#     data_dir: ./data/SEED-Data-Flickr30k/annotations
+#     image_dir: ./data/SEED-Data-Flickr30k/images
+#     max_length: 880
+#     batch_size: 16
+#     instruction_prompt: "[INST] {instruction} [/INST]\n"
+#     num_img_in_tokens: 64
+#     num_img_out_tokens: 64
+#     cycle_count: 1000
+#     multi_resolution: True
+#     resolution_grids: 
+#       - 1x1
+#     base_resolution: 448
+#     dataset_name: Flickr30k
