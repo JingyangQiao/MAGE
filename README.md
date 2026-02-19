@@ -4,7 +4,7 @@ Official Pytorch implementation for Continual-NExT: A Unified Comprehension And 
 Paper will come soon!
 
 ## 1. Abstract
-Dual-to-Dual MLLMs refer to Multimodal Large Language Models, which canenable unified multimodal comprehension and generation through text and imagemodalities. Although exhibiting strong instantaneous learning and generalizationcapabilities, Dual-to-Dual MLLMs still remain deficient in lifelong evolution, sig-nificantly affecting continual adaptation to dynamic real-world scenarios. One ofthe challenges is that learning new tasks inevitably destroys the learned knowl-edge. Beyond traditional catastrophic forgetting, Dual-to-Dual MLLMs face otherchallenges, including hallucination, instruction unfollowing, and failures in cross-modal knowledge transfer. However, no standardized continual learning frameworkfor Dual-to-Dual MLLMs has been established yet, leaving these challenges unex-plored. Thus, in this paper, we establish Continual-NExT, a continual learningframework for Dual-to-Dual MLLMs with deliberately-architected evaluation met-rics. To improve the continual learning capability of Dual-to-Dual MLLMs, wepropose an efficient MAGE (Mixture and Aggregation of General LoRA andExpert LoRA) method to further facilitate knowledge transfer across modalitiesand mitigate forgetting. Extensive experiments demonstrate that MAGE outper-forms other continual learning methods and achieves state-of-the-art performance.
+Dual-to-Dual MLLMs refer to Multimodal Large Language Models, which can enable unified multimodal comprehension and generation through text and image modalities. Although exhibiting strong instantaneous learning and generalization capabilities, Dual-to-Dual MLLMs still remain deficient in lifelong evolution, significantly affecting continual adaptation to dynamic real-world scenarios. One of the challenges is that learning new tasks inevitably destroys the learned knowledge. Beyond traditional catastrophic forgetting, Dual-to-Dual MLLMs face other challenges, including hallucination, instruction unfollowing, and failures in cross-modal knowledge transfer. However, no standardized continual learning framework for Dual-to-Dual MLLMs has been established yet, leaving these challenges unexplored. Thus, in this paper, we establish Continual-NExT, a continual learning framework for Dual-to-Dual MLLMs with deliberately-architected evaluation metrics. To improve the continual learning capability of Dual-to-Dual MLLMs, we propose an efficient MAGE (Mixture and Aggregation of General LoRA andExpert LoRA) method to further facilitate knowledge transfer across modalitiesand mitigate forgetting. Extensive experiments demonstrate that MAGE outper-forms other continual learning methods and achieves state-of-the-art performance.
 
 ## 2. Continual-NExT Dataset
 1. Please download the Continual-NExT datasets **(annotations)** in our huggingface page (https://huggingface.co/datasets/jingyang/Continual-NExT). Then save these datasets in the `./data` dictionary.
@@ -28,33 +28,33 @@ Dual-to-Dual MLLMs refer to Multimodal Large Language Models, which canenable un
 |       └── COCO2014
 |    	    └── train2014
 |           └── val2014
-|       └──annotations
-|       └──questions
+|       └── annotations
+|       └── questions
 |   └── SEED-Data-ImageNet
 |       └── imagenet
 |    	    └── train
 |           └── val
-|       └──annotations
-|       └──questions
+|       └── annotations
+|       └── questions
 |   └── SEED-Data-Fliackr30k
 |       └── images
-|       └──annotations
-|       └──questions
+|       └── annotations
+|       └── questions
 |   └── SEED-Data-OCRVQA
 |       └── OCR-VQA
-|       └──annotations
-|       └──questions
+|       └── annotations
+|       └── questions
 |   └── SEED-Data-Grounding
 |       └── COCO2014
 |    	    └── train2014
-|       └──annotations
-|       └──questions
+|       └── annotations
+|       └── questions
 |   └── SEED-Data-HQEdit
 |       └── images
 |    	    └── source_images
 |           └── target_images
-|       └──annotations
-|       └──questions
+|       └── annotations
+|       └── questions
 ```
 
 ## 3. Install Repository
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 ## 4. Checkpoints
 1. Please prepare the pre-trained SEED-X checkpoints as the instructions in [SEED-X](https://github.com/AILab-CVC/SEED-X).
 
-2. In order to ensure that each CL (Continual Learning) baseline has a common initial training checkpoint, we did not adopt any CL methods. Instead, we directly train on the initial task (VQAv2) and obtain the LoRA weights and Mage (MoELoRA) agent weights, which can be downloaded in [LoRA](https://huggingface.co/jingyang/Continual-NExT-VQAv2/tree/main/lora) and [Mage](https://huggingface.co/jingyang/Continual-NExT-VQAv2/tree/main/mage). Finally, these checkpoints needed to be stored as `./train_output/mage/VQAv2/pytorch_model.bin`
+2. In order to ensure that each CL (Continual Learning) baseline has a common initial training checkpoint, we did not adopt any CL methods. Instead, we directly train on the initial task (VQAv2) and obtain the LoRA agent weights and Mage (MoELoRA) agent weights, which can be downloaded in [LoRA](https://huggingface.co/jingyang/Continual-NExT-VQAv2/tree/main/lora) and [Mage](https://huggingface.co/jingyang/Continual-NExT-VQAv2/tree/main/mage). Finally, these checkpoints needed to be stored as `./train_output/mage/VQAv2/pytorch_model.bin`
 
 3. Then, organize the checkpoints as follows:
 
@@ -83,7 +83,7 @@ pip install -r requirements.txt
 |   └── QwenViT
 |   └── seed_x_i
 |   └── seed_x_edit
-|   └──stable-diffusion-xl-base-1.0
+|   └── stable-diffusion-xl-base-1.0
 ```
 
 ## 5. Training
